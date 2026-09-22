@@ -16,5 +16,5 @@ public class BookingServiceApplication {
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
-
+        //Fully testing CI/CD
 }
