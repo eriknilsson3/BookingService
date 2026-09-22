@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New booking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="new-booking-body">
+<div class="container">
+    <h1 class="dashboard-title">Create a new booking</h1>
+    
+    <form id="date-form" class="booking-form">
+        <label>Start date</label>
+        <input type="date" id="startDate" required>
+        <label>End date</label>
+        <input type="date" id="endDate" required>
+        
+        <p id="date-error" class="error-message"></p>
+        
+        <button type="submit">Check availability</button>
+    </form>
+    
+    <div id="available-rooms" class="room-list hidden">
+        <h3>Available rooms</h3>
+    </div>
+    
+    <div id="extra-bed-section" class="extra-bed hidden">
+        <label>
+            <input type="checkbox" name="extraBed">
+            Add extra bed
+        </label>
+    </div>
+    
+    <form id="confirm-form" class="hidden">
+        <button type="submit" class="btn btn-brown">Confirm booking</button>
+        <button type="button" id="cancel-booking" class="btn btn-secondary">Cancel</button>
+    </form>
+
+    <div id="success-message" class="hidden">
+        <p>Thank you for your booking!</p>
+        <button id="back-to-dashboard">Back to dashboard</button>
+    </div>
+
+</div>
+<script src="api-config.js"></script>
+<script src="newBooking.js"></script>
+</body>
+</html>

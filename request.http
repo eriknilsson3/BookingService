@@ -1,0 +1,36 @@
+### 1. Login and get JWT token for session + save it
+POST {{customerServiceUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "rest.test@example.com",
+  "password": "TestPassword123!"
+}
+
+> {%
+    client.global.set("token", response.body.token);
+    client.log("JWT stored for this HTTP Client session.");
+%}
+
+### 2. Check if customer exists
+GET {{customerServiceUrl}}/customers/{{customerId}}
+Authorization: Bearer {{token}}
+
+### 3. Check if customer has active booking or not (Should be false)
+GET {{bookingServiceUrl}}/bookings/customer/{{customerId}}/active
+Authorization: Bearer {{token}}
+
+### 4. Create bookings
+POST {{bookingServiceUrl}}/bookings
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "roomId": {{roomId}},
+  "startDate": "2026-12-01",
+  "endDate": "2026-12-05"
+}
+
+### 5. Check again if customer has active booking or not (Should be true)
+GET {{bookingServiceUrl}}/bookings/customer/{{customerId}}/active
+Authorization: Bearer {{token}}

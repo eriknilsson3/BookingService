@@ -1,0 +1,276 @@
+
+/*GLOBAL SETTINGS*/
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url("guesthouse.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*  PAGE LAYOUT VARIANTS
+========================================= */
+
+/* Login & Register: container ska ligga lite längre ner */
+body.main-body {
+    justify-content: flex-start;
+}
+
+/* Dashboard: container ska vara centrerad */
+body.dashboard-body {
+    justify-content: center;
+}
+
+/* TITLES
+========================================= */
+
+/* Stor vit titel (login & register) */
+.welcome-title {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 52px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    margin-top: 40px;
+    text-shadow:
+            0 0 20px rgba(0,0,0,0.7),
+            0 0 8px rgba(255,255,255,0.3);
+}
+
+/* Dashboard-titel (inne i vit container) */
+.dashboard-title {
+    text-align: center;
+    color: rgba(50, 17, 3, 0.7);
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+/* UNIVERSAL CONTAINER (ALLA SIDOR)
+========================================= */
+
+.container {
+    width: 90%;
+    max-width: 350px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 12px;
+    margin-top: 40px;
+
+    box-shadow:
+            0 0 15px rgba(0,0,0,0.3),
+            0 0 5px rgba(255,255,255,0.4);
+}
+
+.container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: rgba(50, 17, 3, 0.7);
+    font-weight: 500;
+    font-size: 28px;
+}
+
+/* INPUTS
+========================================= */
+
+.container input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 18px 0;
+    border-radius: 6px;
+    border: 1px solid #aaa;
+    font-size: 15px;
+    transition: 0.2s ease;
+}
+
+.container input:focus {
+    border-color: rgba(50, 17, 3, 0.6);
+    outline: none;
+    box-shadow: 0 0 5px rgba(50, 17, 3, 0.3);
+}
+
+/* BUTTONS
+========================================= */
+
+.container button,
+.dashboard-buttons button {
+    width: 100%;
+    padding: 12px;
+    background: rgba(50, 17, 3, 0.7);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.2s ease;
+}
+
+.container button:hover,
+.dashboard-buttons button:hover {
+    background: rgba(50, 17, 3, 0.9);
+}
+
+.dashboard-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* ERROR MESSAGE
+========================================= */
+
+.error {
+    margin-top: 20px;
+    padding: 12px;
+    background: rgba(255, 0, 0, 0.15);
+    border: 1px solid rgba(255, 0, 0, 0.4);
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    color: #8b0000;
+    font-size: 14px;
+    display: none;
+}
+
+/* SWITCH LINK
+========================================= */
+
+.switch-link {
+    text-align: center;
+    margin-top: 15px;
+    color: #333;
+}
+
+.switch-link a {
+    color: rgba(50, 17, 3, 0.8);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.switch-link a:hover {
+    text-decoration: underline;
+}
+
+
+/* RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 768px) {
+    .welcome-title {
+        font-size: 40px;
+        margin-top: 25px;
+    }
+
+    .container {
+        padding: 25px;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-title {
+        font-size: 32px;
+        margin-top: 20px;
+        letter-spacing: 2px;
+    }
+
+    .container {
+        max-width: 300px;
+        padding: 20px;
+        margin-top: 15px;
+    }
+}
+/* NEW BOOKING PAGE
+========================================= */
+
+/* Form layout */
+.booking-form,
+.confirm-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Error message under date fields */
+.date-error {
+    color: #b30000;
+    font-size: 14px;
+    margin-top: -10px;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+/* Room list container */
+.room-list {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Each room option */
+.room-option {
+    padding: 12px;
+    border: 1px solid rgba(50, 17, 3, 0.3);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.85);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    transition: 0.2s ease;
+}
+
+.room-option:hover {
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 8px rgba(50, 17, 3, 0.25);
+}
+
+/* Extra bed section */
+.extra-bed {
+    margin-top: 15px;
+    padding: 12px;
+    background: rgba(50, 17, 3, 0.08);
+    border-radius: 8px;
+    border: 1px solid rgba(50, 17, 3, 0.2);
+}
+
+/* Success message */
+.success-message {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(0, 128, 0, 0.15);
+    border: 1px solid rgba(0, 128, 0, 0.4);
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    color: #1f5e1f;
+    font-size: 16px;
+    display: none;
+}
+
+/* Utility class */
+.hidden {
+    display: none;
+}
+
+#confirm-form.hidden {
+    display: none;
+}
+
+#confirm-form:not(.hidden) {
+    display: flex;
+    gap: 12px;
+}
+
+
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Informatiom</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard">
+
+<h1 class="welcome-title">My Information</h1>
+
+<div class="container">
+    <h2>Profile Information</h2>
+    
+    <input type="text" placeholder="First name" id="firstname">
+    <input type="text" placeholder="Last name" id="lastname">
+    <input type="text" placeholder="Email Address" id="email_address">
+    <input type="text" placeholder="Phone Number" id="phone_number">
+    
+    <button id="saveBtn">Save Informaton</button>
+    
+    <hr>
+    
+    <h2>Change Password</h2>
+    <input type="text" placeholder="Current Password" id="current_password">
+    <input type="text" placeholder="New Password" id="new_password">
+    <input type="text" placeholder="Confirm Password" id="confirm_password">
+    <button id="changeBtn">Change Password</button>
+    
+    <hr>
+    
+    <button id="logoutBtn">Logout</button>
+    
+    <hr>
+    
+    <button id="deleteBtn">Delete User</button>
+    
+    <hr>
+    
+    <button id="backBtn">Back</button>
+    
+    <p class="error" id="errorMessage"></p>
+    <p id="successMessage" class="success-message"></p>
+
+    <script src="api-config.js"></script>
+    <script src="my-info.js"></script>
+</div>
+
+</body>
+</html>

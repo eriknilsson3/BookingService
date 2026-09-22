@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My bookings</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-body">
+<div class="container">
+    
+    <h2>My bookings</h2>
+    
+    <div id="bookingsList"></div>
+    
+    <p id="noBookingsMessage" style="display: none; text-align: center;">
+        You have no active bookings
+    </p>
+    
+    <!-- Change Booking Modal -->
+    <div id="changeBookingModal" class="modal hidden">
+        <h3>Change Booking</h3>
+        
+        <label>New Start Date</label>
+        <input type="date" id="newStartDate">
+        
+        <label>New End Date</label>
+        <input type="date" id="newEndDate">
+        
+        <button id="saveBookingChangeBtn">Save Changes</button>
+        <button id="closeModalBtn">Cancel</button>
+        
+        <p id="changeError" class="error"></p>
+        <p id="changeSuccess" class="success"></p>
+    </div>
+    
+    <!-- Back button OUTSIDE modal -->
+    <button onclick="location.href='dashboard.html'">Back to menu</button>
+
+</div>
+<script src="api-config.js"></script>
+<script src="my-bookings.js" defer></script>
+</body>
+</html>
