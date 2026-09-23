@@ -36,7 +36,9 @@ public class SecurityConfig {
                 .csrf(c -> c.disable())
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(a -> a
-                        .requestMatchers("/login.html", "/register.html").permitAll()
+                        .requestMatchers(
+                                "/","/login.html", "/register.html",
+                                "/style.css", "/api-config.js", "/app.js", "guesthouse.jpg").permitAll()
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/bookings/**").authenticated()
                         .requestMatchers(HttpMethod.POST, "/bookings/**").authenticated()
