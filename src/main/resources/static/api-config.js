@@ -14,5 +14,5 @@ window.APP_CONFIG = {
     CUSTOMER_API:
         isLocalhost
             ? "http://localhost:8081"
-            : "https://bookingservice-production-badb.up.railway.app"
+            : "https://customerservice-production-8e66.up.railway.app"
 };
