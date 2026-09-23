@@ -38,7 +38,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(a -> a
                         .requestMatchers(
                                 "/","/login.html", "/register.html",
-                                "/style.css", "/api-config.js", "/app.js", "guesthouse.jpg").permitAll()
+                                "/style.css", "/api-config.js", "/app.js", "/guesthouse.jpg").permitAll()
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/bookings/**").authenticated()
                         .requestMatchers(HttpMethod.POST, "/bookings/**").authenticated()
