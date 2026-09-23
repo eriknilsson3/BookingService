@@ -99,6 +99,8 @@ document.getElementById("deleteBtn").addEventListener("click", async () => {
             showMessage(true, "User deleted successfully.");
             setTimeout(() => {
                 localStorage.removeItem("customer");
+                localStorage.removeItem("customerId");
+                localStorage.removeItem("token");
                 window.location.href = "login.html";
             }, 2000);
         } else {
@@ -127,6 +129,8 @@ document.getElementById("deleteBtn").addEventListener("click", async () => {
 
 document.getElementById("logoutBtn").addEventListener("click", () => {
     localStorage.removeItem("customer");
+    localStorage.removeItem("customerId");
+    localStorage.removeItem("token");
     window.location.href = "login.html";
 });
 

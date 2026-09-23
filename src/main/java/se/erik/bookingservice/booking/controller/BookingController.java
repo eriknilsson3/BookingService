@@ -77,14 +77,16 @@ public class BookingController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteBooking(@PathVariable Long id){
-        bookingService.cancelBooking(id);
+    public void deleteBooking(@PathVariable Long id, Authentication authentication){
+        Long customerId = (Long) authentication.getPrincipal();
+        bookingService.cancelBooking(id, customerId);
     }
 
     @PutMapping("/{id}")
     public Booking updateBooking(@PathVariable Long id,
-                                 @Valid @RequestBody UpdateBookingRequest request) {
-        return bookingService.updateBooking(id, request);
+                                 @Valid @RequestBody UpdateBookingRequest request, Authentication authentication) {
+        Long customerId = (Long) authentication.getPrincipal();
+        return bookingService.updateBooking(id, request, customerId);
     }
 
     @GetMapping("/customer/{customerId}/room/{roomId}")

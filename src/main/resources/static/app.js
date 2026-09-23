@@ -22,7 +22,36 @@ if (loginForm) {
             // Spara kunddata
             localStorage.setItem("token", data.token);
 
-            window.location.href = "dashboard.html";
+            try {
+                const tokenPayload = JSON.parse(atob(data.token.split(".")[1].replace(/-/g, "+").replace(/_/g, "/")));
+
+                const customerId = tokenPayload.sub;
+                const customerResponse = await fetch(
+                    `${APP_CONFIG.CUSTOMER_API}/customers/${customerId}`,
+                    {
+                        headers: { "Authorization": "Bearer " + data.token }
+                    }
+                );
+                if (!customerResponse.ok) {
+                    throw new Error("Could not load customer information.")
+                }
+                const customer = await  customerResponse.json();
+                localStorage.setItem("customer", JSON.stringify(customer));
+                localStorage.setItem("customerId", customer.id);
+
+                window.location.href = "dashboard.html";
+            } catch (error) {
+                console.error("Could not init logged-in customer:", error);
+
+                localStorage.removeItem("token");
+                localStorage.removeItem("customer");
+                localStorage.removeItem("customerId");
+
+                const errorMessage = document.getElementById("errorMessage");
+                errorMessage.textContent = "Login succeeded, but customer information could not be loaded.";
+                errorMessage.style.display = "block";
+            }
+
         } else {
             const errorMessage = document.getElementById("errorMessage");
 

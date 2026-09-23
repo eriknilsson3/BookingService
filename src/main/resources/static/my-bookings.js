@@ -59,7 +59,7 @@ async function loadBookings() {
                     <label>New end date:</label>
                     <input type="date" id="newEnd-${b.id}">
 
-                    <button onclick="saveBookingChange(${b.id})">Save</button>
+                    <button onclick="saveBookingChange(${b.id}, ${b.room.id})">Save</button>
 
                     <p id="changeError-${b.id}" style="color:red;"></p>
                     <p id="changeSuccess-${b.id}" style="color:green;"></p>
@@ -81,7 +81,7 @@ function toggleChangeFields(id) {
     box.style.display = box.style.display === "none" ? "block" : "none";
 }
 
-async function saveBookingChange(id) {
+async function saveBookingChange(id, roomId) {
     const start = document.getElementById(`newStart-${id}`).value;
     const end = document.getElementById(`newEnd-${id}`).value;
 
@@ -106,7 +106,7 @@ async function saveBookingChange(id) {
             body: JSON.stringify({
                 startDate: start,
                 endDate: end,
-                roomId: null
+                roomId: roomId
             })
         });
 

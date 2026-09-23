@@ -89,7 +89,7 @@ public class BookingService {
     }
 
     @Transactional
-    public Booking updateBooking(Long id, UpdateBookingRequest request) {
+    public Booking updateBooking(Long id, UpdateBookingRequest request, Long customerId) {
 
         Booking booking = getBookingById(id);
 
@@ -152,7 +152,7 @@ public class BookingService {
 
 
     @Transactional
-    public void cancelBooking(Long id){
+    public void cancelBooking(Long id, Long customerId){
         Booking booking = getBookingById(id);
 
         if (booking.getStatus() == BookingStatus.CANCELLED) {
