@@ -15,14 +15,16 @@ async function loadBookings() {
     noBookingsMessage.style.display = "none";
 
     try {
-        const res = await fetch(`${BOOKING_API}/bookings/my/`, {
+        const res = await fetch(`${BOOKING_API}/bookings/my`, {
             headers: {
                 "Authorization": "Bearer " + token
             }
         });
 
         if (!res.ok) {
-            noBookingsMessage.textContent = "Could not load bookings.";
+            const errorText = await res.text();
+            console.error("Could not load bookings:", res.status, errorText);
+            noBookingsMessage.textContent = errorText || 'Could not load bookings (${res.status}).';
             noBookingsMessage.style.display = "block";
             return;
         }
