@@ -37,8 +37,10 @@ public class SecurityConfig {
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(a -> a
                         .requestMatchers(
-                                "/","/login.html", "/register.html",
-                                "/style.css", "/api-config.js", "/app.js", "/guesthouse.jpg").permitAll()
+                                "/","/index.html","/login.html", "/register.html", "/dashboard.html",
+                                "/my-bookings.html", "/my-info.html", "/newBooking.html", "/style.css",
+                                "/api-config.js", "/app.js", "/dashboard.js", "/my-bookings.js", "/my-info.js",
+                                "/newBooking.js", "/guesthouse.jpg", "/favicon.ico").permitAll()
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/bookings/**").authenticated()
                         .requestMatchers(HttpMethod.POST, "/bookings/**").authenticated()
@@ -46,7 +48,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.DELETE, "/bookings/**").authenticated()
                         .anyRequest().authenticated()
                 )
-                .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .sessionManagement(s ->
+                        s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }

@@ -24,22 +24,27 @@ if (loginForm) {
 
             window.location.href = "dashboard.html";
         } else {
-            const errorText = await response.text();
             const errorMessage = document.getElementById("errorMessage");
 
-            // Visa snyggt felmeddelande istället för timestamp
-            if (errorText.includes("timestamp")) {
-                errorMessage.textContent = "Something went wrong.";
-            } else {
-                errorMessage.textContent = errorText;
+            let message = "Invalid email or password";
+
+            try {
+                const errorData = await  response.json();
+
+                if (errorData.message) {
+                    message = errorData.message;
+                }
+            } catch (error) {
+                console.error("Could not parse the login error respons:", error)
             }
 
+            errorMessage.textContent = message;
             errorMessage.style.display = "block";
 
             // Dölj felmeddelandet när användaren börjar skriva igen
             document.getElementById("password").addEventListener("input", () => {
                 errorMessage.style.display = "none";
-            });
+            }, { once: true });
         }
     });
 }
