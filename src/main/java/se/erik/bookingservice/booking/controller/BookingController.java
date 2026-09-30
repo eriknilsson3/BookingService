@@ -1,6 +1,8 @@
 package se.erik.bookingservice.booking.controller;
 
+import org.slf4j.Logger;
 import jakarta.validation.Valid;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
@@ -18,6 +20,8 @@ import java.util.List;
 @RequestMapping("/bookings")
 public class BookingController {
 
+    private static final Logger log = LoggerFactory.getLogger(BookingController.class);
+
     private final BookingService bookingService;
 
     public BookingController(BookingService bookingService) {
@@ -31,6 +35,7 @@ public class BookingController {
 
     @GetMapping("/{id}")
     public Booking getBookingById(@PathVariable Long id){
+        log.info("GET /bookings/{} called", id);
         return bookingService.getBookingById(id);
     }
 

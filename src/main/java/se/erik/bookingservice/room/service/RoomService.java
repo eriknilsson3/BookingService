@@ -1,5 +1,7 @@
 package se.erik.bookingservice.room.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import se.erik.bookingservice.error.BadRequest;
 import se.erik.bookingservice.error.NotFoundException;
@@ -11,6 +13,8 @@ import java.util.List;
 
 @Service
 public class RoomService {
+
+    private static final Logger log = LoggerFactory.getLogger(RoomService.class);
 
     private final RoomRepository roomRepository;
 
@@ -28,6 +32,7 @@ public class RoomService {
     }
 
     public Room createRoom(Room room){
+        log.info("Creating room {}", room.getRoomNumber());
         if(roomRepository.existsByRoomNumber(room.getRoomNumber())){
             throw new BadRequest("Room number already exists");
         }
