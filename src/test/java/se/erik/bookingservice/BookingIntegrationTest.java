@@ -58,7 +58,7 @@ class BookingIntegrationTest {
         bookingRepository.deleteAll();
 
         testRoom = roomRepository.save(
-                new Roo(
+                new Room(
                         "TEST-" + UUID.randomUUID(),
                         RoomType.SINGLE,
                         false,
