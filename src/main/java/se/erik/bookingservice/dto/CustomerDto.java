@@ -7,4 +7,3 @@ public record CustomerDto(
         String email,
         String phoneNumber
 ) {}
-
